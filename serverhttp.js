@@ -4,20 +4,25 @@ const app = express();
 //midlleware
 app.use(express.urlencoded());
 
-app.post("/product", (req,res) => {
-  console.log(req.body);
-  res.redirect("/");
-});
 
-app.get("/addname", (req,res) => {
-  res.send(
-    '<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Name</button></form>'
-  );
-
-});
-
-app.get("/", (req,res,) => {
+app.get("/", (req, res) => {
   res.send("<h1>Home Page</h1>");
+});
+
+app.get("/addname", (req, res) => {
+  res.send(
+    '<form action="/name" method="POST"><input type="text" name="title"><button type="submit">Add Name</button></form>'
+  );
+});
+
+app.post("/name", (req,res) => {
+  console.log(req.body);
+  res.redirect('/')
+  
+});
+
+app.get("/editname", (req, res) => {
+  res.status(404).send('<h1>Eror not yet implemented</h1>')
 });
 
 //settings
